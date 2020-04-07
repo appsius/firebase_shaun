@@ -1,0 +1,56 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+			integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+			crossorigin="anonymous"
+		/>
+		<title>Firebase Recipes</title>
+	</head>
+	<body>
+		<div class="container my-5">
+			<h2>Recipes</h2>
+			<ul>
+				<li>Mushroom pie</li>
+				<li>Veg curry</li>
+			</ul>
+			<form>
+				<label for="recipe">Add a new recipe:</label>
+				<div class="input-group">
+					<input type="text" class="form-control" id="recipe" required />
+					<div class="input-group-append">
+						<input
+							type="submit"
+							value="add"
+							class="btn btn-outline-secondary"
+						/>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<!-- The core Firebase JS SDK is always required and must be listed first -->
+		<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+		<script>
+			// Your web app's Firebase configuration
+			var firebaseConfig = {
+				apiKey: 'AIzaSyCr7FldkKq314o2Z85OZixgDg8e9E4mhxU',
+				authDomain: 'shaun-javascript.firebaseapp.com',
+				databaseURL: 'https://shaun-javascript.firebaseio.com',
+				projectId: 'shaun-javascript',
+				storageBucket: 'shaun-javascript.appspot.com',
+				messagingSenderId: '86618414609',
+				appId: '1:86618414609:web:c8d7634d13fe6c2d139bb0',
+			};
+			// Initialize Firebase
+			firebase.initializeApp(firebaseConfig);
+			const db = firebase.firestore();
+		</script>
+
+		<script src="sandbox.js"></script>
+	</body>
+</html>
