@@ -14,17 +14,26 @@ const addRecipe = (recipe, id) => {
 	list.innerHTML += html;
 };
 
-// Get documents
-db.collection('recipes')
-	.get()
-	.then((snapshot) => {
-		snapshot.docs.forEach((doc) => {
-			addRecipe(doc.data(), doc.id);
-		});
-	})
-	.catch((err) => {
-		console.log(err);
+const deleteRecipe = (id) => {
+	const recipes = document.querySelectorAll('li');
+	recipes.forEach((recipe) => {
+		if (recipe.getAttribute('data-id') === id) {
+			recipe.remove();
+		}
 	});
+};
+
+// Get documents
+db.collection('recipes').onSnapshot((snapshot) => {
+	snapshot.docChanges().forEach((change) => {
+		const doc = change.doc;
+		if (change.type === 'added') {
+			addRecipe(doc.data(), doc.id);
+		} else if (change.type === 'removed') {
+			deleteRecipe(doc.id);
+		}
+	});
+});
 
 // Add documents
 form.addEventListener('submit', (e) => {
